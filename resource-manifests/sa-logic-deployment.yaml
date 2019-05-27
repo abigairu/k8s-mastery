@@ -16,8 +16,8 @@ spec:
         app: sa-logic
     spec:
       containers:
-        - image: rinormaloku/sentiment-analysis-logic
-          imagePullPolicy: Always
+        - image: gcr.io/pofc003/sentiment-analysis-logic
+          imagePullPolicy: IfNotPresent
           name: sa-logic
           ports:
             - containerPort: 5000

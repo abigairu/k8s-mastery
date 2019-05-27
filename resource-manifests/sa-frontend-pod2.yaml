@@ -6,7 +6,8 @@ metadata:
     app: sa-frontend
 spec:
   containers:
-    - image: rinormaloku/sentiment-analysis-frontend 
+    - image: gcr.io/pofc003/sentiment-analysis-frontend
       name: sa-frontend
+      imagePullPolicy: IfNotPresent
       ports:
         - containerPort: 80
