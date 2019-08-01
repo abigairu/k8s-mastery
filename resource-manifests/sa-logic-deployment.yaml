@@ -1,8 +1,13 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app: sa-logic
   name: sa-logic
 spec:
+  selector:
+    matchLabels:
+      app: sa-logic
   replicas: 2
   minReadySeconds: 15
   strategy:
@@ -16,8 +21,9 @@ spec:
         app: sa-logic
     spec:
       containers:
-        - image: gcr.io/pofc003/sentiment-analysis-logic
+        - image: sentiment-analysis-logic
           imagePullPolicy: IfNotPresent
           name: sa-logic
           ports:
             - containerPort: 5000
+          resources: {}

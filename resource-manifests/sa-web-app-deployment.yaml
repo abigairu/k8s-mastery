@@ -1,8 +1,13 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app: sa-webapp
   name: sa-webapp
 spec:
+  selector:
+    matchLabels:
+      app: sa-webapp
   replicas: 2
   minReadySeconds: 15
   strategy:
@@ -16,11 +21,13 @@ spec:
         app: sa-webapp
     spec:
       containers:
-      - image: gcr.io/pofc003/sentiment-analysis-webapp
+      - image: sentiment-analysis-webapp
         imagePullPolicy: IfNotPresent
         name: sa-webapp
         env:
           - name: SA_LOGIC_API_URL
-            value: "http://sa-logic"
+            # value: "http://sa-logic"
+            value: "http://10.104.213.196:5000"
         ports:
           - containerPort: 8080
+        resources: {}

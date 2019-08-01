@@ -6,7 +6,7 @@ metadata:
     app: sa-frontend                                 # 2
 spec:                                                # 3
   containers:
-    - image: gcr.io/pofc003/sentiment-analysis-frontend # 4
+    - image: sentiment-analysis-frontend             # 4
       name: sa-frontend                              # 5
       imagePullPolicy: IfNotPresent
       ports:
